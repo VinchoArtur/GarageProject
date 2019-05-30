@@ -42,6 +42,7 @@ public class ExcelDocument extends AbstractExcelView {
 //        Set excel header
         setExcelHeader(excelSheet, styleHeader);
 
+
 //        Get data from model
         List<Cat> cats = (List<Cat>) model.get("modelObject");
         int rowCount = 1;
@@ -52,6 +53,8 @@ public class ExcelDocument extends AbstractExcelView {
             row.createCell(2).setCellValue(cat.getColor());
         }
     }
+
+
 
     public void setExcelHeader(HSSFSheet excelSheet, CellStyle styleHeader) {
         //set Excel Header names
