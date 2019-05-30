@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>
-    error
+    Error
 </h1>
 </body>
 </html>

@@ -14,8 +14,16 @@ import java.util.List;
 import java.util.Map;
 
 public class PDFDocument extends AbstractPdfView {
+
     @Override
-    protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter pdfWriter, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    protected void buildPdfDocument(
+            Map<String, Object> model,
+            Document document,
+            PdfWriter writer,
+            HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
+
+
         PdfPTable table = new PdfPTable(3);
         PdfPCell header1 = new PdfPCell(new Phrase("Name"));
         PdfPCell header2 = new PdfPCell(new Phrase("Weight"));
@@ -27,14 +35,13 @@ public class PDFDocument extends AbstractPdfView {
         table.addCell(header2);
         table.addCell(header3);
 
-//        Get data from model
-        List<Cat> cats = (List<Cat>)model.get("modelObject");
-        for (Cat cat: cats){
+        //Get data from model
+        List<Cat> cats = (List<Cat>) model.get("modelObject");
+        for (Cat cat : cats) {
             table.addCell(cat.getName());
             table.addCell(String.valueOf(cat.getWeight()));
             table.addCell(cat.getColor());
         }
         document.add(table);
-
     }
 }

@@ -14,11 +14,20 @@
          and also resolves @Autowired and @Qualifier -->
     <context:component-scan base-package="by.home.mvcHtml5Angular.mvc" />
 
+    <!--
+        mvc:annotation-driven configures Spring MVC annotations
+        Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is present on the classpath.
+        HttpMessageConverter support for @RequestBody method parameters and @ResponseBody method return values
+        from @RequestMapping or @ExceptionHandler methods.
+     -->
+    <mvc:annotation-driven/>
+
+
     <!-- ViewResolver bean config for mapping strings to jsp views -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
         <property name="order" value="1" />
-        <property name="prefix" value="/WEB-INF/view" />
+        <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
     </bean>
 
@@ -36,9 +45,9 @@
         </property>
     </bean>
 
-
-    <mvc:view-controller path="/about.html" view-name="/about/about"/>
     <mvc:view-controller path="/index.html" view-name="/index"/>
+    <mvc:view-controller path="/about.html" view-name="/about/about"/>
+    <mvc:view-controller path="/file.html" view-name="/file/file"/>
 
 
 </beans>
